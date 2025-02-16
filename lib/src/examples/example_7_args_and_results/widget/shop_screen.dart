@@ -1,21 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_widget_seminar/store/widget/product_row_item.dart';
 
 import '../model/product.dart';
-import 'hide_price_scope.dart';
+import '../model/shop.dart';
+import '../state/shop_notifier.dart';
+import 'product_item.dart';
 
-class StoreScreen extends StatelessWidget {
-  const StoreScreen({super.key});
+class StoreScreenExample7 extends StatefulWidget {
+  const StoreScreenExample7({super.key});
 
   @override
-  Widget build(BuildContext context) => HidePriceScope(
+  State<StoreScreenExample7> createState() => _StoreScreenExample7State();
+}
+
+class _StoreScreenExample7State extends State<StoreScreenExample7> {
+  late final ShopNotifier _notifier;
+
+  @override
+  void initState() {
+    super.initState();
+    _notifier = ShopNotifier(
+      ShopModel(),
+    );
+  }
+
+  @override
+  void dispose() {
+    _notifier.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => ShopInheritedNotifier(
+        notifier: _notifier,
         child: Scaffold(
           appBar: AppBar(
             title: const Text('Store'),
             centerTitle: true,
             actions: const [_ActionButton()],
           ),
-          body: const BodyLayout(),
+          body: const _BodyLayout(),
         ),
       );
 }
@@ -25,7 +48,7 @@ class _ActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isVisible = HidePriceInheritedNotifier.of(context).value;
+    final isVisible = ShopInheritedNotifier.of(context).value.hidePrice;
 
     return IconButton(
       onPressed: () => _onChange(context, isVisible),
@@ -34,13 +57,13 @@ class _ActionButton extends StatelessWidget {
   }
 
   void _onChange(BuildContext context, bool isVisible) {
-    final notifier = HidePriceInheritedNotifier.of(context);
+    final notifier = ShopInheritedNotifier.of(context);
     isVisible ? notifier.hide() : notifier.show();
   }
 }
 
-class BodyLayout extends StatelessWidget {
-  const BodyLayout({super.key});
+class _BodyLayout extends StatelessWidget {
+  const _BodyLayout();
 
   @override
   Widget build(BuildContext context) => ListView.separated(

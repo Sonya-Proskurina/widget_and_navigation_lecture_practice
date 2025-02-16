@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../model/product.dart';
-import 'hide_price_scope.dart';
+import '../state/shop_notifier.dart';
 
 class ProductRowItem extends StatelessWidget {
   final Product product;
@@ -40,7 +40,7 @@ class ProductRowItem extends StatelessWidget {
                   ],
                 ),
               ),
-              const _IconButton(),
+              _IconButton(product.id),
             ],
           ),
         ),
@@ -58,16 +58,13 @@ class _Avatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(4),
-      child: SizedBox.square(
-        dimension: 68,
-        child: Image.asset(
-          product.assetName,
-          package: product.assetPackage,
-          fit: BoxFit.cover,
-          width: 68,
-          height: 68,
-          errorBuilder: (context, error, sk) => const Icon(Icons.warning),
-        ),
+      child: Image.asset(
+        product.assetName,
+        package: product.assetPackage,
+        fit: BoxFit.cover,
+        width: 68,
+        height: 68,
+        errorBuilder: (context, error, sk) => const Icon(Icons.warning),
       ),
     );
   }
@@ -101,7 +98,7 @@ class _Subtitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isVisible = HidePriceInheritedNotifier.of(context).value;
+    final isVisible = ShopInheritedNotifier.of(context).value.hidePrice;
     return Text(
       '$price \$',
       style: TextStyle(
@@ -110,14 +107,16 @@ class _Subtitle extends StatelessWidget {
         fontWeight: FontWeight.w300,
         decoration: isVisible ? null : TextDecoration.lineThrough,
       ),
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
     );
   }
 }
 
 class _IconButton extends StatelessWidget {
-  const _IconButton();
+  final int id;
+
+  const _IconButton(
+    this.id,
+  );
 
   @override
   Widget build(BuildContext context) => IconButton(
