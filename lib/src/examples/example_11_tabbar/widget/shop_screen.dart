@@ -154,13 +154,32 @@ class _BodyLayout extends StatelessWidget {
       );
 }
 
-class _NewTab extends StatelessWidget {
+class _NewTab extends StatefulWidget {
   const _NewTab();
+
+  @override
+  State<_NewTab> createState() => _NewTabState();
+}
+
+class _NewTabState extends State<_NewTab> {
+  int counter = 0;
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('New tab'),
+      child: Column(
+        children: [
+          Text('New tab '+counter.toString()),
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                counter++;
+              });
+            },
+            child: Text('tap'),
+          )
+        ],
+      ),
     );
   }
 }

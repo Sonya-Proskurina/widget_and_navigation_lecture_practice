@@ -28,6 +28,7 @@ class _InheritedCaseState extends State<InheritedCase> {
           count: _counter,
           child: Center(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
                   onPressed: _increment,
@@ -69,7 +70,6 @@ class CounterText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scope = CounterScope.of(context);
-    MediaQuery.of(context).size.height;
     return Text('Count: ${scope.count}');
   }
 }

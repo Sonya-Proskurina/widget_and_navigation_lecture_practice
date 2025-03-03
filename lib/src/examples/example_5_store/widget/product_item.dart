@@ -18,33 +18,28 @@ class ProductRowItem extends StatelessWidget {
   static const double endIndent = 14.0;
 
   @override
-  Widget build(BuildContext context) => SafeArea(
-        top: false,
-        bottom: false,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 8, 14, 8),
-          child: Row(
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.fromLTRB(20, 8, 14, 8),
+    child: Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(right: 16),
+          child: _Avatar(product),
+        ),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 16),
-                child: _Avatar(product),
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _Title(product.name),
-                    const SizedBox(height: 3),
-                    _Subtitle(product.price),
-                  ],
-                ),
-              ),
-              _IconButton(product.id),
+              _Title(product.name),
+              const SizedBox(height: 3),
+              _Subtitle(product.price),
             ],
           ),
         ),
-      );
+        _IconButton(product.id),
+      ],
+    ),
+  );
 }
 
 class _Avatar extends StatelessWidget {

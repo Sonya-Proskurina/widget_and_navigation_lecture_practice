@@ -28,11 +28,11 @@ class _ProductRowItemState extends State<ProductRowItem> {
   Widget build(BuildContext context) => InkWell(
         onTap: () {
           /// открытие новой страницы
-          // Navigator.of(context).push(
-          //   MaterialPageRoute(
-          //     builder: (_) => ProductScreen(),
-          //   ),
-          // );
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) => ProductScreen(),
+            ),
+          );
 
           /// замена текущего экрана новым
           // Navigator.of(context).pushReplacement(

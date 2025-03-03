@@ -24,38 +24,36 @@ class ProductRowItem extends StatefulWidget {
 
 class _ProductRowItemState extends State<ProductRowItem> {
   @override
-  Widget build(BuildContext context) => ProductItemInheritedNotifier(
-        notifier: ShopInheritedNotifier.of(context)
-            .getValueNotifierById(widget.product.id),
-        child: SafeArea(
-          top: false,
-          bottom: false,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 8, 14, 8),
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 16),
-                  child: _Avatar(widget.product),
-                ),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _Title(widget.product.name),
-                      const SizedBox(height: 3),
-                      _Subtitle(widget.product.price),
-                    ],
-                  ),
-                ),
-                _ItemText(),
-                _IconButton(widget.product.id),
-              ],
+  Widget build(BuildContext context) {
+    print("build ProductRowItem " + widget.product.id.toString());
+    return ProductItemInheritedNotifier(
+      notifier: ShopInheritedNotifier.of(context)
+          .getValueNotifierById(widget.product.id),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 8, 14, 8),
+        child: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 16),
+              child: _Avatar(widget.product),
             ),
-          ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _Title(widget.product.name),
+                  const SizedBox(height: 3),
+                  _Subtitle(widget.product.price),
+                ],
+              ),
+            ),
+            _ItemText(),
+            _IconButton(widget.product.id),
+          ],
         ),
-      );
+      ),
+    );
+  }
 }
 
 class _ItemText extends StatelessWidget {
@@ -63,6 +61,7 @@ class _ItemText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("build _ItemText");
     return Text(
       'conut: ' + ProductItemInheritedNotifier.of(context).value.toString(),
     );

@@ -6,24 +6,21 @@ class BuilderCase extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Center(
-          child: Builder(
-            builder: (BuildContext context) {
-              return ElevatedButton(
+          child:
+              ElevatedButton(
                 onPressed: () {
                   Scaffold.of(context).showBottomSheet(
-                    (context) => Container(
+                        (context) => Container(
                       height: 100,
                       color: Colors.red,
                     ),
                   );
                 },
                 child: Text('Показать BottomSheet'),
-              );
-            },
-          ),
-          // FutureBuilderExample(),
-          // StreamBuilderExample(),
-          // LayoutBuilderExample(),
+              ),
+              // FutureBuilderExample(),
+              // StreamBuilderExample(),
+              // LayoutBuilderExample(),
         ),
       );
 }
@@ -43,29 +40,27 @@ class _FutureBuilderExampleState extends State<FutureBuilderExample> {
     super.initState();
     _future = Future<String>.delayed(
       const Duration(seconds: 2),
-      // () => 'Data Loaded',
-      () => throw 'Error!',
+      () => 'Data Loaded',
+      // () => throw 'Error!',
     );
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        body: FutureBuilder<String>(
-          future: _future,
-          builder: (context, snapshot) {
-            final data = snapshot.data;
+  Widget build(BuildContext context) => FutureBuilder<String>(
+        future: _future,
+        builder: (context, snapshot) {
+          final data = snapshot.data;
 
-            if (data != null) {
-              return Text('Success: $data');
-            }
+          if (data != null) {
+            return Text('Success: $data');
+          }
 
-            if (snapshot.hasError) {
-              return const Text('Error');
-            }
+          if (snapshot.hasError) {
+            return const Text('Error');
+          }
 
-            return const CircularProgressIndicator();
-          },
-        ),
+          return const CircularProgressIndicator();
+        },
       );
 }
 
@@ -99,23 +94,21 @@ class _StreamBuilderExampleState extends State<StreamBuilderExample> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        body: StreamBuilder<int?>(
-          stream: _stream,
-          builder: (context, snapshot) {
-            final data = snapshot.data;
+  Widget build(BuildContext context) => StreamBuilder<int?>(
+        stream: _stream,
+        builder: (context, snapshot) {
+          final data = snapshot.data;
 
-            if (data != null) {
-              return Text('Success: $data');
-            }
+          if (data != null) {
+            return Text('Success: $data');
+          }
 
-            if (snapshot.hasError) {
-              return Text('Error: ${snapshot.error}');
-            }
+          if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          }
 
-            return const CircularProgressIndicator();
-          },
-        ),
+          return const CircularProgressIndicator();
+        },
       );
 }
 
@@ -123,17 +116,15 @@ class LayoutBuilderExample extends StatelessWidget {
   const LayoutBuilderExample({super.key});
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        body: LayoutBuilder(
-          builder: (context, constraints) {
-            print('constraints: $constraints');
+  Widget build(BuildContext context) => LayoutBuilder(
+        builder: (context, constraints) {
+          print('constraints: $constraints');
 
-            if (constraints.maxWidth > 600) {
-              return const Text('Horizontal');
-            }
+          if (constraints.maxWidth > 600) {
+            return const Text('Horizontal');
+          }
 
-            return const Text('Vertical');
-          },
-        ),
+          return const Text('Vertical');
+        },
       );
 }

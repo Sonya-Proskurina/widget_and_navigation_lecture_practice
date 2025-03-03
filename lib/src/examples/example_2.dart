@@ -47,19 +47,22 @@ class _StatefulCaseState extends State<StatefulCase> {
   Widget build(BuildContext context) {
     print('StatefulCase Build');
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ElevatedButton(
-            onPressed: _increment,
-            child: Text('Click ' + _counter.toString()),
-          ),
-          _Counter(
-            count: _counter,
-            text: widget.text,
-          ),
-          if (_counter < 10) const _Notification()
-        ],
+      body: SizedBox(
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: _increment,
+              child: Text('Click ' + _counter.toString()),
+            ),
+            _Counter(
+              count: _counter,
+              text: widget.text,
+            ),
+            if (_counter < 10) _Notification()
+          ],
+        ),
       ),
     );
   }

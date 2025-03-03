@@ -10,7 +10,7 @@ abstract class RouteNamesExample11 {
   static const product = 'product';
 }
 
-abstract class RoutesBuilderExample10 {
+abstract class RoutesBuilderExample11 {
   static final routes = <String, Widget Function(BuildContext)>{
     RouteNamesExample11.home: (BuildContext) => const StoreScreenExample11(),
     RouteNamesExample11.product: (BuildContext) => const ProductScreenExample11(),

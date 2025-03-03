@@ -15,7 +15,7 @@ class NavigationManager11 {
 
   Future<int> openProduct(Product product, int count) async {
     final res = await _navigator.pushNamed(
-      RouteNamesExample11.product,
+      RouteNamesExample10.product,
       arguments: [
         product,
         count,

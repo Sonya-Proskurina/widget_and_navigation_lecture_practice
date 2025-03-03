@@ -6,19 +6,19 @@ class ProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // automaticallyImplyLeading: false,
-        // actions: [
-        //   IconButton(
-        //     icon: Icon(
-        //       Icons.close,
-        //     ),
-        //     onPressed: () {
-        //       Navigator.of(context).pop();
-        //     },
-        //   ),
-        // ],
-      ),
+      // appBar: AppBar(
+      // automaticallyImplyLeading: false,
+      // actions: [
+      //   IconButton(
+      //     icon: Icon(
+      //       Icons.close,
+      //     ),
+      //     onPressed: () {
+      //       Navigator.of(context).pop();
+      //     },
+      //   ),
+      // ],
+      // ),
       body: Center(
         child: Text('Product screen'),
       ),

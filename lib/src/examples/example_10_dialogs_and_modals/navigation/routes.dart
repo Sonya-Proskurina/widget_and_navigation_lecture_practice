@@ -5,30 +5,30 @@ import '../../example_11_tabbar/widget/shop_screen.dart';
 import '../widget/product_screen.dart';
 import '../widget/shop_screen.dart';
 
-abstract class RouteNamesExample11 {
-  const RouteNamesExample11._();
+abstract class RouteNamesExample10 {
+  const RouteNamesExample10._();
 
   static const home = '/';
   static const product = 'product';
 }
 
-abstract class RoutesBuilderExample11 {
+abstract class RoutesBuilderExample10 {
   static final routes = <String, Widget Function(BuildContext)>{
-    RouteNamesExample11.home: (BuildContext) => const StoreScreenExample11(),
-    RouteNamesExample11.product: (BuildContext) => const ProductScreenExample11(),
+    RouteNamesExample10.home: (BuildContext) => const StoreScreenExample10(),
+    RouteNamesExample10.product: (BuildContext) => const ProductScreenExample10(),
   };
 
   static Route<Object?>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case RouteNamesExample11.home:
+      case RouteNamesExample10.home:
         return MaterialPageRoute(
-          builder: (_) => const StoreScreenExample11(),
+          builder: (_) => const StoreScreenExample10(),
           settings: settings,
         );
 
-      case RouteNamesExample11.product:
+      case RouteNamesExample10.product:
         return MaterialPageRoute(
-          builder: (_) => const ProductScreenExample11(),
+          builder: (_) => const ProductScreenExample10(),
           settings: settings,
         );
     }

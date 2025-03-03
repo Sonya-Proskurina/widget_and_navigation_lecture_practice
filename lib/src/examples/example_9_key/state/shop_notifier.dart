@@ -19,7 +19,7 @@ class ShopNotifier extends ValueNotifier<ShopModel> {
     final valueNotifier = value.countMap[id];
     if (valueNotifier == null) {
       value.countMap[id] = ValueNotifier(0);
-      return ValueNotifier<int>(0);
+      return value.countMap[id]!;
     }
     return valueNotifier;
   }

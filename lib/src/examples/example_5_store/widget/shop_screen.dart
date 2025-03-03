@@ -67,7 +67,7 @@ class _BodyLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ListView.separated(
-        itemBuilder: (ontext, index) => ProductRowItem(
+        itemBuilder: (context, index) => ProductRowItem(
           Product.products[index],
         ),
         separatorBuilder: (context, index) => const Divider(
